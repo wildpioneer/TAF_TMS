@@ -4,7 +4,7 @@ using GUI.Steps;
 using NUnit.Allure.Core;
 using OpenQA.Selenium;
 
-namespace GUI;
+namespace GUI.Tests;
 
 [AllureNUnit]
 public class BaseTest
@@ -15,6 +15,7 @@ public class BaseTest
     private AllureLifecycle _allure;
 
     protected NavigationSteps NavigationSteps;
+    protected ProjectSteps ProjectSteps;
     
     [SetUp]
     public void Setup()
@@ -27,6 +28,7 @@ public class BaseTest
         
         // Инициализация Steps
         NavigationSteps = new NavigationSteps(Driver);
+        ProjectSteps = new ProjectSteps(Driver);
     }
 
     [TearDown]

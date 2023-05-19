@@ -1,4 +1,4 @@
-namespace GUI;
+namespace GUI.Tests;
 
 public class Tests : BaseTest
 {
