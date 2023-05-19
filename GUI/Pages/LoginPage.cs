@@ -26,7 +26,7 @@ namespace GUI.Pages
             {
                 return LoginInButton().Displayed;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

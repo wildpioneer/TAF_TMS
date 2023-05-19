@@ -5,7 +5,7 @@ namespace GUI.Steps;
 
 public class BaseStep
 {
-    protected IWebDriver Driver { get; set; }
+    protected IWebDriver Driver;
 
     public LoginPage LoginPage => new LoginPage(Driver);
     public DashboardPage DashboardPage => new DashboardPage(Driver);

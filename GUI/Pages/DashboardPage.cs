@@ -24,7 +24,7 @@ namespace GUI.Pages
             {
                 return SidebarProjectsAddButton.Displayed;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

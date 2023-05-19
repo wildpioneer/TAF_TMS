@@ -5,7 +5,7 @@ namespace GUI.Pages;
 
 public abstract class BasePage
 {
-    protected IWebDriver Driver { get; set; }
+    protected IWebDriver Driver;
 
     public BasePage(IWebDriver driver, bool openPageByUrl)
     {
