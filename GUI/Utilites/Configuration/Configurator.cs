@@ -19,7 +19,7 @@ namespace GUI.Utilites.Configuration
         {
             var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var builder = new ConfigurationBuilder()
-                .SetBasePath(basePath)
+                .SetBasePath(basePath ?? throw new InvalidOperationException())
                 .AddJsonFile("appsettings.json");
 
             var appSettingFiles = Directory.EnumerateFiles(basePath ?? string.Empty, "appsettings.*.json");
@@ -58,7 +58,7 @@ namespace GUI.Utilites.Configuration
                         Password = section["Password"],
                         Username = section["Username"]
                     };
-                    user.UserType = section["UserType"].ToLower() switch
+                    user.UserType = section["UserType"]?.ToLower() switch
                     {
                         "admin" => UserType.Admin,
                         "user" => UserType.User,
@@ -75,5 +75,7 @@ namespace GUI.Utilites.Configuration
         public static User? Admin => Users.Find(x => x?.UserType == UserType.Admin);
 
         public static User? UserByUsername(string username) => Users.Find(x => x?.Username == username);
+
+        public static string? BrowserType => Configuration[nameof(BrowserType)];
     }
 }
