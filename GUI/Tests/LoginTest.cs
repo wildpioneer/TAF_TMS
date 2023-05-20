@@ -7,6 +7,7 @@ public class LoginTest : BaseTest
     private static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
     [Test]
+    [SmokeTest]
     public void SuccessLoginTest()
     {
         NavigationSteps.NavigateToLoginPage();

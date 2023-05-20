@@ -20,15 +20,7 @@ namespace GUI.Pages
         
         public override bool IsPageOpened()
         {
-            try
-            {
-                return SidebarProjectsAddButton.Displayed;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            
+            return WaitService.GetVisibleElement(SidebarProjectsAddButtonBy) != null;
         }
 
         protected override string GetEndpoint()

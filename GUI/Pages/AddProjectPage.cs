@@ -20,15 +20,7 @@ namespace GUI.Pages
         
         public override bool IsPageOpened()
         {
-            try
-            {
-                return NameInput.Displayed;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            
+            return WaitService.GetVisibleElement(NameInputBy) != null;
         }
 
         protected override string GetEndpoint()

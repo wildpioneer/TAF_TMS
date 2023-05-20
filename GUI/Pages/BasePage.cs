@@ -1,3 +1,4 @@
+using GUI.Core;
 using GUI.Utilites.Configuration;
 using OpenQA.Selenium;
 
@@ -6,10 +7,12 @@ namespace GUI.Pages;
 public abstract class BasePage
 {
     protected IWebDriver Driver;
+    protected WaitService WaitService;
 
     public BasePage(IWebDriver driver, bool openPageByUrl)
     {
         Driver = driver;
+        WaitService = new WaitService(Driver);
 
         if (openPageByUrl)
         {

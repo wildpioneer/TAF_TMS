@@ -1,3 +1,4 @@
+using GUI.Wrappers;
 using OpenQA.Selenium;
 
 namespace GUI.Pages
@@ -22,15 +23,7 @@ namespace GUI.Pages
         
         public override bool IsPageOpened()
         {
-            try
-            {
-                return LoginInButton().Displayed;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            
+            return WaitService.GetVisibleElement(LoginInButtonBy) != null;
         }
 
         protected override string GetEndpoint()
@@ -39,24 +32,24 @@ namespace GUI.Pages
         }
 
         // Методы
-        public IWebElement EmailInput()
+        public Input EmailInput()
         {
-            return Driver.FindElement(EmailInputBy);  
+            return new Input(Driver, EmailInputBy);  
         }
 
-        public IWebElement PswInput()
+        public Input PswInput()
         {
-            return Driver.FindElement(PswInputBy);
+            return new Input(Driver, PswInputBy);
         }
 
-        public IWebElement RememberMeCheckbox()
+        public UIElement RememberMeCheckbox()
         {
-            return Driver.FindElement(RememberMeCheckboxBy);  
+            return new UIElement(Driver, RememberMeCheckboxBy);  
         }
 
-        public IWebElement LoginInButton()
+        public Button LoginInButton()
         {
-           return Driver.FindElement(LoginInButtonBy);
+           return new Button(Driver, LoginInButtonBy);
         }
     }
 }

@@ -7,6 +7,7 @@ using OpenQA.Selenium;
 namespace GUI.Tests;
 
 [AllureNUnit]
+[Parallelizable(ParallelScope.All)]
 public class BaseTest
 {
     private static readonly Logger logger = LogManager.GetCurrentClassLogger();
