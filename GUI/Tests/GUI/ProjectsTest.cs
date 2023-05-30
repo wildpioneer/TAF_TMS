@@ -1,7 +1,7 @@
 using GUI.Utilites.Configuration;
 using GUI.Utilites.Helpers;
 
-namespace GUI.Tests;
+namespace GUI.Tests.GUI;
 
 public class ProjectsTest : BaseTest
 {

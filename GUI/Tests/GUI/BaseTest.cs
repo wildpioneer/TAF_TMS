@@ -2,49 +2,53 @@ using Allure.Commons;
 using GUI.Core;
 using GUI.Steps;
 using NUnit.Allure.Core;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 
-namespace GUI.Tests;
+namespace GUI.Tests.GUI;
 
 [AllureNUnit]
 [Parallelizable(ParallelScope.All)]
 public class BaseTest
 {
-    private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+    private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
     
     protected IWebDriver Driver;
-    private AllureLifecycle _allure;
-
     protected NavigationSteps NavigationSteps;
     protected ProjectSteps ProjectSteps;
+    private AllureLifecycle _allure;
     
     [SetUp]
     public void Setup()
     {
-        logger.Info("Starting IWebDriver...");
-        Driver = new Browser().Driver;
+        _logger.Trace("Сообщение уровня Trace");
+        _logger.Debug("Сообщение уровня Debug");
+        _logger.Info("Сообщение уровня Info");
+        _logger.Warn("Сообщение уровня Warn");
+        _logger.Error("Сообщение уровня Error");
+        _logger.Fatal("Сообщение уровня Fatal");
         
-        // Инициализация AllureLifecycle
-        _allure = AllureLifecycle.Instance;
+        Driver = new Browser().Driver;
         
         // Инициализация Steps
         NavigationSteps = new NavigationSteps(Driver);
         ProjectSteps = new ProjectSteps(Driver);
+
+        // Инициализация Allure
+        _allure = AllureLifecycle.Instance;
     }
 
     [TearDown]
     public void TearDown()
     {
-        logger.Info("Closing IWebDriver...");
-        
-        // Проверка, был ли тест сброшен
-        if (TestContext.CurrentContext.Result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed)
+        // Проверка, что тест упал
+        if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
         {
             // Создание скриншота
             Screenshot screenshot = ((ITakesScreenshot)Driver).GetScreenshot();
             byte[] screenshotBytes = screenshot.AsByteArray;
 
-            // Прикрепление скриншота к отчету Allure
+            // Прикрепление сриншота
             _allure.AddAttachment("Screenshot", "image/png", screenshotBytes);
         }
         
