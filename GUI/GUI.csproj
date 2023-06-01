@@ -45,6 +45,10 @@
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
       <None Remove="NLog.Debug.config" />
+      <None Remove="TestData\CreateUser.json" />
+      <Content Include="TestData\CreateUser.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
