@@ -29,5 +29,10 @@ namespace GUI.Pages
         }
 
         public IWebElement SidebarProjectsAddButton => Driver.FindElement(SidebarProjectsAddButtonBy);
+
+        public List<string> GetProjectIDsFromTable()
+        {
+            return Driver.FindElements(By.CssSelector(".row.project[id]")).Select(element => element.GetAttribute("id").Split("-")[1]).ToList();
+        }
     }
 }

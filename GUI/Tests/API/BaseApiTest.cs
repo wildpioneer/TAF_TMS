@@ -11,6 +11,7 @@ public class BaseApiTest
     [OneTimeSetUp]
     public void InitApiClient()
     {
+        Environment.GetEnvironmentVariable("PASSWORD");
         _apiClient = new ApiClient();
         _projectService = new ProjectService(_apiClient);
     }
