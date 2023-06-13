@@ -2,6 +2,7 @@ using System.Reflection;
 using GUI.Models;
 using GUI.Models.Enums;
 using Microsoft.Extensions.Configuration;
+using SQL.Configuration;
 
 namespace GUI.Utilites.Configuration
 {
@@ -44,6 +45,25 @@ namespace GUI.Utilites.Configuration
                 return appSettings;
             }
         }
+        
+        public static DbSettings DbSettings
+        {
+            get
+            {
+                var dbSettings = new DbSettings();
+                var child = Configuration.GetSection("DbSettings");
+
+                dbSettings.Driver = child["DB_Driver"];
+                dbSettings.Server = child["DB_Server"];
+                dbSettings.Port = child["DB_Port"];
+                dbSettings.Schema = child["DB_Schema"];
+                dbSettings.Username = child["DB_Username"];
+                dbSettings.Password = child["DB_Password"];
+
+                return dbSettings;
+            }
+        }
+
 
         public static List<User?> Users
         {
