@@ -9,4 +9,6 @@ public interface ICustomerDao
     int Add(Customer customer);
     int Update(Customer customer);
     int Delete(int? id);
+    void Create();
+    void Drop();
 }

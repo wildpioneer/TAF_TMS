@@ -103,4 +103,29 @@ public class CustomerDao : ICustomerDao
             return command.ExecuteNonQuery();
         }
     }
+
+    public void Create()
+    {
+        var createTableSQL = "CREATE TABLE customers (" +
+                                "id SERIAL PRIMARY KEY, " +
+                                "firstname CHARACTER VARYING(30), " +
+                                "lastname CHARACTER VARYING(30), " +
+                                "email CHARACTER VARYING(30), " +
+                                "age INTEGER" +
+                                ");";
+        using (var command = new NpgsqlCommand(createTableSQL, _connection))
+        {
+            command.ExecuteNonQuery();
+        }
+    }
+
+    public void Drop()
+    {
+        var dropTableSQL = "drop table if exists customers;";
+        
+        using (var command = new NpgsqlCommand(dropTableSQL, _connection))
+        {
+            command.ExecuteNonQuery();
+        }
+    }
 }
