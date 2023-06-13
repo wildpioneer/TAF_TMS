@@ -27,5 +27,4 @@ public class LoginSteps : BaseSteps
     {
         _navigationSteps.SuccessfulLogin(username, password);
     }
-    
 }

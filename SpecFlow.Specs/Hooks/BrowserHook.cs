@@ -1,7 +1,6 @@
+using GUI.Core;
 using GUI.Steps;
-using SpecFlow.Actions.Selenium;
 using TechTalk.SpecFlow;
-using Browser = GUI.Core.Browser;
 
 namespace SpecFlow.Specs.Hooks;
 
@@ -20,6 +19,7 @@ public class BrowserHook
     [BeforeScenario("GUI")]
     public void BeforeScenario()
     {
+        Console.WriteLine("Start Browser");
         var navigationStep = new NavigationSteps(_browser.Driver);
         navigationStep.NavigateToLoginPage();
     }
