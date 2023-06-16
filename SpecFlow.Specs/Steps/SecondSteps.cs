@@ -43,7 +43,7 @@ public class SecondSteps
     [Then(@"title is ""(.*)""")]
     public void TitleIs(string expectedValue)
     {
-        Assert.AreEqual(expectedValue, _browser.Driver.Title);
+        Assert.That(_browser.Driver.Title, Is.EqualTo(expectedValue));
     }
         
     [Then(@"project id is (.*)")]

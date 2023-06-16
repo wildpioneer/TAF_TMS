@@ -1,13 +1,11 @@
 using Allure.Commons;
 using GUI.Core;
 using GUI.Steps;
-using NUnit.Allure.Core;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 
 namespace GUI.Tests.GUI;
 
-[AllureNUnit]
 [Parallelizable(ParallelScope.All)]
 public class BaseTest
 {

@@ -1,9 +1,12 @@
 using GUI.Core;
 using GUI.Steps;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
+[assembly: Parallelizable(ParallelScope.Fixtures)]
 
 namespace SpecFlow.Specs.Hooks;
 
+[Binding]
 public class BrowserHook
 {
     private readonly Browser _browser;

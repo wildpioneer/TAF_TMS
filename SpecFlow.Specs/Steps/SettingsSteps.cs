@@ -14,8 +14,9 @@ public class SettingsSteps : BaseSteps
     [Then(@"settings page is opened")]
     public void IsSettingsPageOpened()
     {
-        Driver.Navigate().GoToUrl("https://aqac01onl01.testrail.io/index.php?/admin/site_settings");
-        Assert.AreEqual("Site Settings - TestRail", Driver.Title);
+        Driver.Navigate().GoToUrl(GUI.Utilites.Configuration.Configurator.AppSettings.URL + 
+                                  "index.php?/admin/site_settings");
+        Assert.That(Driver.Title, Is.EqualTo("Site Settings - TestRail"));
     }
 
 }
