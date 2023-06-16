@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SQL.Models
 {
+    [Table("customers")]
     public record Customer
     {
         [Column("id")]
