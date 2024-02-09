@@ -12,6 +12,6 @@ public class LoginTest : BaseTest
         NavigationSteps.NavigateToLoginPage();
         NavigationSteps.SuccessfulLogin(Configurator.Admin);
         
-        Assert.IsTrue(NavigationSteps.DashboardPage.IsPageOpened());
+        Assert.That(NavigationSteps.DashboardPage.IsPageOpened());
     }
 }

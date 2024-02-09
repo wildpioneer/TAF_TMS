@@ -7,6 +7,7 @@ namespace GUI.Steps;
 public class NavigationSteps : BaseStep
 {
     private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+    
     public NavigationSteps(IWebDriver driver) : base(driver) { }
 
 
